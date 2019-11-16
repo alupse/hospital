@@ -1,14 +1,21 @@
-import React ,{Component} from 'react';
+import React ,{Component, Fragment} from 'react';
+import NavBar from '../../features/nav/NavBar/NavBar';
+import { Container } from 'semantic-ui-react';
+import DefaultPageDashboard from '../../features/mainPage/pageComponent/DefaultPageDashboard/DefaultPageDashboard';
 
 
 class App extends Component {
  
  render(){
     return (
-      <div >
-        <h1>Hospital</h1>
+      <Fragment>
+       
+      <NavBar></NavBar>
+      <Container className="main" >
         
-      </div>
+      <DefaultPageDashboard></DefaultPageDashboard>
+      </Container>
+      </Fragment>
     );
  } 
 }

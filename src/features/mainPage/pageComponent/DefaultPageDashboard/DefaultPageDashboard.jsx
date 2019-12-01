@@ -44,18 +44,24 @@ const greeting="miau";
 
 
 class DefaultPageDashboard extends Component {
+    state={
+        nursesList:nurses,
+        doctorsList:doctors
+    }
   render() {
+    const {nursesList,doctorsList}=this.state;
     return (
+      
       <Grid>
         <Grid.Column width={8}>
-            <NavBar greeting={greeting} nurses={nurses}></NavBar>
+            <NavBar greeting={greeting} nurses={nursesList}></NavBar>
           <AverageWaitingTimeComponent></AverageWaitingTimeComponent>
           <RemainingPatientsComponent></RemainingPatientsComponent>
         </Grid.Column>
         <Grid.Column width={8}>
           <ShiftPersonelComponent
-            nurses={nurses}
-            doctors={doctors}
+            nurses={nursesList}
+            doctors={doctorsList}
          
            
           ></ShiftPersonelComponent>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Segment, Item, Icon, List, Input } from "semantic-ui-react";
+import { Segment, Item, Icon, List} from "semantic-ui-react";
 
 class ShiftPersonnelComponent extends Component {
   render() {

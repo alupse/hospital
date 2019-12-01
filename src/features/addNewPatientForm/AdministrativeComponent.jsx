@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Segment, Input, Dropdown, List, Form } from 'semantic-ui-react'
+import { Segment,  Form } from 'semantic-ui-react'
 
  class AdministrativeComponent extends Component {
     render() {

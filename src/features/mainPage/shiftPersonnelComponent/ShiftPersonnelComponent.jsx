@@ -1,154 +1,51 @@
-import React, { Component } from 'react'
-import { Segment, Item, Icon } from 'semantic-ui-react'
+import React, { Component, Fragment } from "react";
+import { Segment, Item, Icon, List, Input } from "semantic-ui-react";
 
- class ShiftPersonnelComponent extends Component {
-    render() {
-        return (
-           <Segment>
-              <Item.Group>
-                        <Item>
-                         
-                          <Item.Content>
-                          <Icon size="large"  name="calendar alternate outline" />
-                          <Item.Header>Shift Personel</Item.Header>
-                          
-                          </Item.Content>
-                         
+class ShiftPersonnelComponent extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Segment>
+          <Item.Group>
+            <Item>
+              <Item.Content>
+                <Icon size="large" name="calendar alternate outline" />
+                <Item.Header>Shift Personel</Item.Header>
+              </Item.Content>
+            </Item>
+          </Item.Group>
 
-                        </Item>
-                    </Item.Group>    
-
-                    <Segment>
-                    <div class="ui right aligned two column grid">
-  <div class="row">
-    <div class="column">
-    <table class="ui celled collapsing very basic table" >
-  <thead class="">
-    <tr class="">
-      <th class=""><h2>Doctors</h2></th>
-     
-    </tr>
-  </thead>
-  <tbody class="">
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-        
-          <div class="">
-          <Icon size="small"  color="red" name="circle" />
-           Alex Lupse
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-        
-          <div class="content">
-          <Icon size="small"  color="yellow" name="circle" />
-           Elizabeth Grant
+          <Segment>
+            <div class="ui grid">
+            
+            <div class="seven wide column">
+            <h3>Nurses</h3>
+              <Fragment>
+                <List>
+                  {this.props.nurses.map(nurse => (
+                    <List.Item > <Icon   color={nurse.code} name="circle"key={nurse.id} />{nurse.name} </List.Item> 
+                  ))}
+                </List>
+              </Fragment>
+              </div>
          
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
+              <div class="seven wide column">
+              <h3>Doctors</h3>
+                <Fragment>
+                  <List>
+                    {this.props.doctors.map(doctor => (
+                      <List.Item>  <Icon   color={doctor.code} name="circle" key={doctor.id}/>{doctor.name}  </List.Item>
+                    ))}
+                  </List>
+                </Fragment>
+              </div>
+              </div>
        
-          <div class="content">
-          <Icon size="small"  color="green" name="circle" />
-            Alice Mitchel
-           
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-        
-          <div class="content">
-          <Icon size="small"  color="blue" name="circle" />
-           Dolores Ann
-         
-          </div>
-        </h4>
-      </td>
-    </tr>
-  </tbody>
-</table>
-    </div>
-    <div class="column">
-    <table class="ui celled collapsing very basic table">
-  <thead class="">
-    <tr class="">
-      <th class=""><h2>Nurses</h2></th>
-     
-    </tr>
-  </thead>
-  <tbody class="">
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-        
-          <div class="">
-          <Icon size="small"  color="red" name="circle" />
-           Annie Hase
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-        
-          <div class="content">
-          <Icon size="small"  color="yellow" name="circle" />
-           Jamie Glose
-         
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-       
-          <div class="content">
-          <Icon size="small"  color="green" name="circle" />
-            Eveline Smith
-           
-          </div>
-        </h4>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="">
-        <h4 class="ui image header">
-       
-          <div class="content">
-          <Icon size="small"  color="blue" name="circle" />
-           Angelina Jonson
-         
-          </div>
-        </h4>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
-
-    </div>
-    
-  </div>
-</div>
-                
-               </Segment>     
-           </Segment>
-         
-        )
-    }
+          </Segment>
+        </Segment>
+      </Fragment>
+    );
+  }
 }
 export default ShiftPersonnelComponent;

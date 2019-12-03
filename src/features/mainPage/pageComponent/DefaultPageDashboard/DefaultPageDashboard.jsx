@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 import AverageWaitingTimeComponent from "../../averageWaitingTimeComponent/AverageWaitingTimeComponent";
 import RemainingPatientsComponent from "../../remainingPatientsComponent/RemainingPatientsComponent";
 import ShiftPersonelComponent from "../../shiftPersonnelComponent/ShiftPersonnelComponent";
 import NavBar from "../../../nav/NavBar/NavBar";
+import ReactDOM from "react-dom";
+import AddNewPatientPage from "../../../addNewPatientPage/AddNewPatientPage";
 
 const nurses = [
   {
@@ -45,23 +47,35 @@ const greeting="miau";
 
 class DefaultPageDashboard extends Component {
     state={
-        nursesList:nurses,
-        doctorsList:doctors
+        nurses:nurses,
+        doctors:doctors,
+        
     }
+    onPressNewPatient() {
+        ReactDOM.render(
+        <AddNewPatientPage nurses={nurses}  />, document.getElementById("root"));
+      }
   render() {
-    const {nursesList,doctorsList}=this.state;
+    
     return (
       
       <Grid>
         <Grid.Column width={8}>
-            <NavBar greeting={greeting} nurses={nursesList}></NavBar>
+            <NavBar greeting={greeting} nurses={nurses}></NavBar>
           <AverageWaitingTimeComponent></AverageWaitingTimeComponent>
           <RemainingPatientsComponent></RemainingPatientsComponent>
         </Grid.Column>
         <Grid.Column width={8}>
+        <Button
+              
+                basic
+                inverted
+                content="New Patient"
+                onClick={this.onPressNewPatient}
+              />
           <ShiftPersonelComponent
-            nurses={nursesList}
-            doctors={doctorsList}
+            nurses={nurses}
+            doctors={doctors}
          
            
           ></ShiftPersonelComponent>

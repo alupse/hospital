@@ -1,13 +1,19 @@
 import React, { Component, Fragment } from 'react'
-import { Segment, Form } from 'semantic-ui-react'
+import { Segment, Form, List, Input, Button } from 'semantic-ui-react'
 import moment from "moment";
+import Nurse from './Nurse';
 
  class TimeAndNursesComponent extends Component {
     constructor() {
         super();
         this.state = {
-          moment: moment()
+          moment: moment(),
+          triajNurse:"m"
+
         };
+        this.getSelectedNurse=this.getSelectedNurse.bind(this);
+        this.f=this.f.bind(this);
+        this.g=this.g.bind(this);
       }
     
       handleChange = moment => {
@@ -15,6 +21,45 @@ import moment from "moment";
           moment
         });
       };
+      onChangeName = (event) => {
+          debugger;
+        this.setState({
+            triajNurse: event.target.value
+        });
+    }
+ getSelectedNurse(name)
+      {
+        
+       
+         
+       
+          this.setState({ triajNurse: name }, function () {
+            console.log(this.state.triajNurse);
+            this.f(this.state.triajNurse);
+       });
+      
+        
+         
+        
+        
+        
+
+      }
+    
+      f(name)
+      {
+        
+        document.getElementById("triajNurse").setAttribute('value',name);
+      }
+      g(name)
+      {
+          debugger;
+          this.setState((triajNurse)=>({triajNurse:name}));}
+          handleChange1(event) {
+            this.setState({value: event.target.value});
+          }
+         
+      
     render() {
         return (
             <Fragment>
@@ -30,15 +75,24 @@ import moment from "moment";
               <Form.Field>
                 <Form.Select
                   fluid
+                  id="triajNurse"
                   label="Triaj Nurse"
+                  class="child"
+                  placeholder={this.state.triajNurse}
+                  onChange={this.handleChange1}
+                 
+                  options={this.props.nurses.map(nurse => (
+                    <Button key={nurse.id} id={nurse.id} onClick={()=>this.getSelectedNurse(nurse.name)} > {nurse.name}</Button> 
+                 ))}
                   
                   
                 />
               </Form.Field>
+              
               <Form.Field>
               <Fragment>
-  {/*               
-                    {this.props.nurses.map(nurse => (
+                
+                    {/* {this.props.nurses.map(nurse => (
                        <Nurse key={nurse.id} id={nurse.id} > {nurse.name}></Nurse> 
                     ))}
                    */}
@@ -50,6 +104,10 @@ import moment from "moment";
                   fluid
                   label="Registration Nurse"
                   placeholder=" Registration Nurse"
+                  options={this.props.nurses.map(nurse => (
+                    <Button key={nurse.id} id={nurse.id} > {nurse.name}</Button> 
+                 ))}
+                  
                 />
               </Form.Field>
               </Form>

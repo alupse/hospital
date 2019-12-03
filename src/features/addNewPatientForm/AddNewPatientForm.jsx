@@ -19,6 +19,29 @@ const broughtFrom = [
   { key: "hospital", text: "hospital", value: "hospital" },
   { key: "work", text: "work", value: "work" }
 ];
+const nurses = [
+  {
+    id: "1",
+    name: "Elizabeth Grant",
+    code: "red"
+  },
+  {
+    id: "2",
+    name: "Selena Martin",
+    code: "green"
+  },
+  {
+    id: "3",
+    name: "Amelia Mark",
+    code: "pink"
+  },
+  {
+    id: "4",
+    name: "Mike Slone",
+    code: "pink"
+  }
+  
+];
 class AddNewPatientForm extends Component {
   render() {
     return (
@@ -28,7 +51,7 @@ class AddNewPatientForm extends Component {
             broughtBy={broughtBy}
             broughtFrom={broughtFrom}
           ></AdministrativeComponent>
-          <TimeAndNursesComponent nurses={this.props.nurses}></TimeAndNursesComponent>
+          <TimeAndNursesComponent nurses={nurses}></TimeAndNursesComponent>
           <MainProblemComponent></MainProblemComponent>
           <PatientPersonalInformationComponent></PatientPersonalInformationComponent>
           <AntecedentsComponent></AntecedentsComponent>

@@ -3,7 +3,7 @@ import { Button, Dropdown, Form } from "semantic-ui-react";
 import { Menu } from "semantic-ui-react";
 import { Container } from "semantic-ui-react";
 import AddNewPatientPage from "../../addNewPatientPage/AddNewPatientPage";
-import ReactDOM from "react-dom";
+
 const a ="Mama are mere";
 class NavBar extends Component {
   state={
@@ -11,10 +11,7 @@ class NavBar extends Component {
    
 }
 
-  onPressNewPatient() {
-    ReactDOM.render(
-    <AddNewPatientPage  />, document.getElementById("root"));
-  }
+
   render() {
     
     return (
@@ -47,17 +44,11 @@ class NavBar extends Component {
             </Dropdown>
 
             <Menu.Item>
-              <Button
-                floated="right"
-                basic
-                inverted
-                content="New Patient"
-                onClick={this.onPressNewPatient}
-              />
+              
             </Menu.Item>
 
             <Menu.Item position="right">
-              <Button
+            <Button
                 basic
                 inverted
                 content="Sign Out"

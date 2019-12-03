@@ -1,6 +1,14 @@
 import React, { Component, Fragment } from "react";
-import { Segment, Radio, List } from "semantic-ui-react";
+import { Segment, Radio, List, Checkbox } from "semantic-ui-react";
 class AntecedentsComponent extends Component {
+    state={
+        isCardioPressed: false,
+        radio:"cardioDisese"
+    };
+    
+    
+        
+    
   render() {
     return (
       <Fragment>
@@ -9,41 +17,41 @@ class AntecedentsComponent extends Component {
         <Segment>
           <List.Item>
             <List.Item>
-              <Radio label="Cardiovascular disease" />
+              <Checkbox   label="Cardiovascular disease"  />
+             
+             
             </List.Item>
+           
             <List.Item>
-              <Radio label="Cardiovascular disease" />
+              {" "}
+              <Checkbox label="Neurological disease" />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Neurological disease" />
+              <Checkbox  label="Kidney disease"  />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Kidney disease" />
+              <Checkbox label="Tuberculosis" />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Tuberculosis" />
+              <Checkbox label="Liver disease" />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Liver disease" />
+              <Checkbox label="Gastric diseases" />
+            </List.Item>
+            <List.Item>
+              <Checkbox label="Diabetes" />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Gastric diseases" />
-            </List.Item>
-            <List.Item>
-              <Radio label="Diabetes" />
+              <Checkbox label="Infectious diseases" />
             </List.Item>
             <List.Item>
               {" "}
-              <Radio label="Infectious diseases" />
-            </List.Item>
-            <List.Item>
-              {" "}
-              <Radio label="STD" />
+              <Checkbox label="STD" />
             </List.Item>
           </List.Item>
         </Segment>

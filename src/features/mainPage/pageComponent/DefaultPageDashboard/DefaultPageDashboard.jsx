@@ -61,7 +61,7 @@ class DefaultPageDashboard extends Component {
       
       <Grid>
         <Grid.Column width={8}>
-            <NavBar greeting={greeting} nurses={nurses}></NavBar>
+          
           <AverageWaitingTimeComponent></AverageWaitingTimeComponent>
           <RemainingPatientsComponent></RemainingPatientsComponent>
         </Grid.Column>

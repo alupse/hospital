@@ -3,22 +3,31 @@ import { Button, Dropdown, Form } from "semantic-ui-react";
 import { Menu } from "semantic-ui-react";
 import { Container } from "semantic-ui-react";
 import AddNewPatientPage from "../../addNewPatientPage/AddNewPatientPage";
+import { NavLink, Link, withRouter} from "react-router-dom";
+import SettingDashboard from "../../user/Settings/SettingDashboard";
+import SignedInMenu from "./Menus/SignedInMenu";
+import SignedOutMenu from "./Menus/SignedOutMenu";
 
 const a ="Mama are mere";
 class NavBar extends Component {
-  state={
-    nursesList:this.props.nursesList,
+  state={ authentificated:true,
+    //nursesList:this.props.nursesList,
    
 }
+handleSignedIn= () =>{debugger; this.setState({authentificated:true});} 
+handleSignedOut= () => {
+  debugger;this.setState({authentificated:false});
+this.props.history.push('/');}
+
 
 
   render() {
-    
+    const{authentificated}=this.state;
     return (
       <div>
         <Menu inverted fixed="top">
           <Container>
-            <Menu.Item header>
+            <Menu.Item as={NavLink} exact to='/' header>
               <img src="assets/heart-icon.png" alt="logo" />
               ER-helper
             </Menu.Item>
@@ -46,15 +55,17 @@ class NavBar extends Component {
             <Menu.Item>
               
             </Menu.Item>
-
-            <Menu.Item position="right">
-            <Button
-                basic
-                inverted
-                content="Sign Out"
-                style={{ marginLeft: "0.5em" }}
-              />
-            </Menu.Item>
+          
+         {authentificated ? ( 
+           <SignedInMenu  signOut={this.handleSignedOut}/>
+         ) : (
+          <SignedOutMenu signIn={this.handleSignedIn}/>
+         )}
+         
+            <Menu.Item  as={NavLink} to='/settings' >
+          <label>Settings</label>
+          </Menu.Item>
+            
           </Container>
         </Menu>
       </div>
@@ -62,4 +73,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar) ;

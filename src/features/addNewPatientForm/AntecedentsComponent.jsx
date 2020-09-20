@@ -14,7 +14,7 @@ class AntecedentsComponent extends Component {
     checkedAntecedents: []
   };
 
-  onChange(e) {
+  onPressEvt(e) {
     debugger;
     // current array of options
     const checkedAntecedents = this.state.checkedAntecedents;
@@ -48,7 +48,9 @@ class AntecedentsComponent extends Component {
                 <input
                   type="checkbox"
                   value={"Cardiovascular disease"}
-                  onChange={this.onChange.bind(this)}
+                  onClick={this.onPressEvt.bind(this)}
+                  onChange={this.props.handler}
+                  name="cardiovascularDisease"
                 />
              
               <span>
@@ -63,7 +65,9 @@ class AntecedentsComponent extends Component {
                 type="checkbox"
                 label="Neurological disease"
                 value={"Neurological disease"}
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
+                name="neurologicalDisease"
               />
               <span>
               <label>Neurological disease</label>
@@ -74,7 +78,9 @@ class AntecedentsComponent extends Component {
               <input type="checkbox"
                 label="Kidney disease"
                 value={"Kidney disease"}
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
+                name="kidneyDisease"
               />
               <span>
               <label>Kidney disease</label>
@@ -85,7 +91,9 @@ class AntecedentsComponent extends Component {
               <input type="checkbox"
                 label="Tuberculosis"
                 value={"Tuberculosis"}
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
+                name="tuberculosis"
               />
               <span>
               <label>Tuberculosis</label>
@@ -96,7 +104,9 @@ class AntecedentsComponent extends Component {
               <input type="checkbox"
                 label="Liver disease"
                 value={"Liver disease"}
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
+                name="liverDisease"
               />
               <span>
               <label>Liver disease</label>
@@ -107,15 +117,22 @@ class AntecedentsComponent extends Component {
               <input type="checkbox"
                 label="Gastric diseases"
                 value={"Gastric disease"}
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
+                name="gastricDiseases"
               />
               <span>
               <label>Gastric disease</label>
                   </span>
             </List.Item>
             <List.Item>
-              <input type="checkbox" label="Diabetes" onChange={this.onChange.bind(this)}
-               value={"Diabetes"} />
+              <input type="checkbox"
+               label="Diabetes" 
+               onClick={this.onPressEvt.bind(this)}
+               onChange={this.props.handler}
+               value={"Diabetes"} 
+               name="diabetes"/>
+              
               <span>
               <label>Diabetes</label>
                   </span>
@@ -124,8 +141,10 @@ class AntecedentsComponent extends Component {
               {" "}
               <input type="checkbox"
                 label="Infectious diseases"
-                onChange={this.onChange.bind(this)}
+                onClick={this.onPressEvt.bind(this)}
+                onChange={this.props.handler}
                 value={"Infectious diseases"}
+                name="infectiousDiseases"
               />
               <span>
               <label>Infectious diseases</label>
@@ -133,7 +152,11 @@ class AntecedentsComponent extends Component {
             </List.Item>
             <List.Item>
               {" "}
-              <input type="checkbox" label="STD" onChange={this.onChange.bind(this)} />
+              <input type="checkbox"
+               label="STD" 
+               onClick={this.onPressEvt.bind(this)} 
+               onChange={this.props.handler}
+               name="STD"/>
               <span>
               <label>STD</label>
                   </span>

@@ -4,13 +4,13 @@ import moment from "moment";
 
 
 class TimeAndNursesComponent extends Component {
-  constructor() {
-    super();
-    this.state = {
-      moment: moment(),
-      triajNurse: "m",
-      registratorNurse:""
-    };
+  constructor(props) {
+    super(props);
+     this.state = {
+      moment: moment()
+    //   triajNurse: "m",
+    //   registratorNurse:""
+     };
     this.getSelectedTriajNurse = this.getSelectedTriajNurse.bind(this);
     this.getSelectedRegistratorNurse = this.getSelectedRegistratorNurse.bind(this);
     this.f = this.f.bind(this);
@@ -62,6 +62,8 @@ class TimeAndNursesComponent extends Component {
               label="Get the current time"
               type="text"
               value={this.state.moment.format("YYYY-MM-DD HH:mm")}
+              name="currentDateTime"
+              onChange={ this.props.handler}
               readOnly
             />
             <Form.Field>
@@ -71,12 +73,15 @@ class TimeAndNursesComponent extends Component {
                 label="Triaj Nurse"
                 class="child"
                 placeholder={this.state.triajNurse}
-                onChange={this.handleChange1}
+                onChange={ this.props.handler}
                 options={this.props.nurses.map(nurse => (
                   <Button
                     key={nurse.id}
                     id={nurse.id}
-                    onClick={() => this.getSelectedTriajNurse(nurse.name)}
+                    onClick={(event) => {this.getSelectedTriajNurse(nurse.name);}}
+                   
+                    name="triajNurse"
+                    
                   >
                     {" "}
                     {nurse.name}
@@ -101,12 +106,14 @@ class TimeAndNursesComponent extends Component {
                 label="Regitrator Nurse"
                 class="child"
                 placeholder={this.state.registratorNurse}
-                onChange={this.handleChange1}
+                onChange={ this.props.handler}
                 options={this.props.nurses.map(nurse => (
                   <Button
                     key={nurse.id}
                     id={nurse.id}
                     onClick={() => this.getSelectedRegistratorNurse(nurse.name)}
+                    name="registratorNurse"
+                    onChange={ this.props.handler}
                   >
                     {" "}
                     {nurse.name}

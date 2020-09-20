@@ -48,11 +48,7 @@ const nurses = [
 class AddNewPatientForm extends Component {
   state ={
     mainProblem:'',
-    administrativeComponent: {
-      broughtBy:'',
-      broughtFrom:''
-    },
-    patientName:''
+   
   };
  
   constructor(props)
@@ -62,32 +58,40 @@ class AddNewPatientForm extends Component {
     this.handleDropDownChange= this.handleDropDownChange.bind(this);
   }
   handleInputChange(evt) {
-    debugger;
-    console.log("miau");
+    
      this.setState({
        [evt.target.name]:evt.target.value
      });
   };
 
-  handleDropDownChange(evt) {
-    debugger;
+  handleDropDownChange(evt,name) {
+  
     console.log("vai");
      this.setState({
-       [evt.target.name]:evt.target.innerText
+       [name.name]:evt.target.innerText
      });
   };
+  handleCheckBox(evt){
+
+    debugger;
+    this.setState({
+       [evt.target.name]:evt.target.checked
+     });
+  }
   onPressCancel() {
 
     
   }
+ 
+  
   handleFormSubmit= evt => {
     evt.preventDefault();
     console.log(this.state);
     }
   render() {
     const{mainProblem}=this.state.mainProblem;
-    const{administrativeComponent}=this.state.administrativeComponent;
-    const{patientName} = this.state.patientName;
+    //const{administrativeComponent}=this.state.administrativeComponent;
+   // const{patientInformationComponent} = this.state.patientInformationComponent;
     return (
       <Segment>
         <div onSubmit={this.handleFormSubmit}>
@@ -96,15 +100,15 @@ class AddNewPatientForm extends Component {
             broughtByOptions={broughtByOptions}
             broughtFromOptions={broughtFromOptions}
             handler={ this.handleDropDownChange}
-            value={administrativeComponent}
           ></AdministrativeComponent>
-          <TimeAndNursesComponent nurses={nurses}></TimeAndNursesComponent>
+          <TimeAndNursesComponent nurses={nurses} name='timingNurses'handler={ this.handleInputChange}></TimeAndNursesComponent>
           <MainProblemComponent  name='mainProblem'
                 value={mainProblem}
-                handler={ this.handleInputChange}></MainProblemComponent>
-          <PatientPersonalInformationComponent name='patientName' value={patientName} handler={ this.handleInputChange}></PatientPersonalInformationComponent>
-          <AntecedentsComponent></AntecedentsComponent>
-          <VitalSignsComponent></VitalSignsComponent>
+                handler={ this.handleInputChange}
+                ></MainProblemComponent>
+          <PatientPersonalInformationComponent name='patientInformationComponent'  handler={ this.handleInputChange}></PatientPersonalInformationComponent>
+          <AntecedentsComponent ></AntecedentsComponent>
+          <VitalSignsComponent  handler={ this.handleInputChange}></VitalSignsComponent>
           <Button positive type="submit" onClick={this.handleFormSubmit}>
             Submit
           </Button>

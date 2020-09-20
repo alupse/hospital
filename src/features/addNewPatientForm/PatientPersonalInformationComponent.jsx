@@ -6,7 +6,8 @@ import { Segment, Form, Radio } from 'semantic-ui-react'
     super(props);
     this.state = {
     gender: "",
-    patientName:""
+    patientName:"",
+    age:""
      
     };
     this.getSelectedGender= this.getSelectedGender.bind(this); 
@@ -15,6 +16,7 @@ import { Segment, Form, Radio } from 'semantic-ui-react'
   getSelectedGender(chosenGender) {
     this.setState({gender: chosenGender }, function() {
       console.log(this.state.gender);
+      
     
     });
   }
@@ -29,24 +31,25 @@ import { Segment, Form, Radio } from 'semantic-ui-react'
           <Segment>
               <Form>
             <Form.Field>
-              <Form.Input label="Name" type="text" placeholder=" Full name"  onChange={ this.props.handler}  />
+              <Form.Input label="Name" type="text" placeholder=" Full name"  name='patientName'onChange={ this.props.handler}  />
             </Form.Field>
             <Form.Field>
-              <Form.Input label="Age" type="text" placeholder=" Age" />
+              <Form.Input label="Age" type="text" placeholder=" Age" name="age" onChange={ this.props.handler} />
             </Form.Field>
             <Form.Field>
               <label>Gender</label>
-              <Radio  id="female" label="Female" name="radioGroup"   checked={this.state.gender === "female"}  onClick={ () => this.getSelectedGender("female")}/>
+              <Radio  id="female" label="Female" name="isFemaleRadio"  onChange={ this.props.handler}/>
             </Form.Field>
             <Form.Field>
-              <Radio id="male" label="Male" name="radioGroup"   checked={this.state.gender === "male"} onClick={ () => this.getSelectedGender("male")}
+              <Radio id="male" label="Male" name="isMaleRadio"  onChange={ this.props.handler}
               /> 
             </Form.Field>
             <Form.Field>
-              <Form.Input
+              <Form.Input onChange={ this.props.handler}
                 label="CNP"
                 type="text"
                 placeholder=" CNP"
+                name="CNP"
               ></Form.Input>
             </Form.Field>
             <Form.Field>
@@ -54,13 +57,17 @@ import { Segment, Form, Radio } from 'semantic-ui-react'
                 label="Adress"
                 type="text"
                 placeholder=" Enter the full adress"
+                name="adress"
+                onChange={ this.props.handler}
               ></Form.Input>
             </Form.Field>
             <Form.Field>
               <Form.Input
                 label="Phone Number"
                 type="text"
+                name="phoneNumber"
                 placeholder=" Enter the  phone number including the prefix"
+                onChange={ this.props.handler}
               ></Form.Input>
             </Form.Field>
             </Form>

@@ -2,42 +2,40 @@ import React, { Component, Fragment } from 'react'
 import { Segment,  Form } from 'semantic-ui-react'
 
  class AdministrativeComponent extends Component {
- state ={
+  constructor(props) {
+    super(props);
+    this.state ={
  
-    broughtBy:'',
-    broughtFrom:''
-  };
-  handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value });
-    this.props.handler();
-  };
+      broughtBy:'',
+      broughtFrom:''
+    };
+
+    };
+
   
     render() {
-      //const{broughtBy}=this.props.AdministrativeComponent.broughtBy;
         return (
             <Fragment>
                 <h3>Administrative</h3>
           <Segment>
-              <Form>
-         <Form.Field>
+              <Form  name='brought'>
+         <Form.Field name='broughtBy'  onChange={ this.props.handler} > 
           <Form.Select options={this.props.broughtByOptions} 
                 placeholder="Brought by"
                 label="Brought by"
-                onChange={ this.props.handler}
-            //value={broughtBy}
+                onChange={this.props.handler}
+                name='broughtBy'  
                 
               />
             </Form.Field>
             
-            <Form.Field>
+            <Form.Field   
+            name='broughtFrom'>
             <Form.Select options={this.props.broughtFromOptions} 
                 placeholder="Brought from"
                 label="Brought from"
                 onChange={ this.props.handler}
-                
-                
-                
-              
+                name='broughtFrom'
               />
               </Form.Field>
             </Form>
